@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mentoring-adf-os"
+		},
+		"AzureSqlDatabaseLinkedService_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase_Datamart_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase_ManagedIdentity_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=azure-mentoring-os.database.windows.net;Initial Catalog=movies"
+		},
+		"AzureSqlModule6_SelfHostedIR_connectionString": {
+			"value": ""
+		},
+		"AzureStorageLinkedService_connectionString": {
+			"value": ""
+		},
+		"AzureBlobModule7_SAS_URI_sasUri": {
+			"value": ""
+		},
+		"AzureBlobStorageAustralia_Linked_Service_sasUri": {
+			"value": ""
+		},
+		"AzureBlobStorage_Linked_SAS_sasUri": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_Manually_properties_typeProperties_url": {
+			"value": "https://azurementoringdatalakeos.dfs.core.windows.net"
+		},
+		"mentoringkeyvaultos_properties_typeProperties_baseUrl": {
+			"value": "https://mentoring-key-vault-os.vault.azure.net/"
+		}
+	}
+}
