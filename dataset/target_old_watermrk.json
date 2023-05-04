@@ -1,0 +1,17 @@
+{
+	"name": "target_old_watermrk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_ManagedIdentity",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "watermarktable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,150 @@
+{
+	"name": "Module10FailedPipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy from Data Lake credits to SQL credits",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "raw/meta-driven/credits.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "stg.credits"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "pipelineId",
+								"value": {
+									"value": "@pipeline().RunId",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "source_filename",
+								"value": "$$FILEPATH"
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false,
+							"wildcardFolderPath": "movies",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE [stg].[credits]",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "cast"
+								},
+								"sink": {
+									"name": "cast"
+								}
+							},
+							{
+								"source": {
+									"name": "crew"
+								},
+								"sink": {
+									"name": "crew"
+								}
+							},
+							{
+								"source": {
+									"name": "id"
+								},
+								"sink": {
+									"name": "id"
+								}
+							},
+							{
+								"source": {
+									"name": "pipelineId"
+								},
+								"sink": {
+									"name": "pipelineId"
+								}
+							},
+							{
+								"source": {
+									"name": "source_filename"
+								},
+								"sink": {
+									"name": "source_filename"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "source_Module10",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "target_SQL_stg_credits",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Fail1",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Copy from Data Lake credits to SQL credits",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": {
+						"value": "@activity('Copy from Data Lake credits to SQL credits').error.message",
+						"type": "Expression"
+					},
+					"errorCode": "1234"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-04-21T10:02:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

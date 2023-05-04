@@ -1,0 +1,11 @@
+{
+	"name": "AzureDataLakeStorage_Manually",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://azurementoringdatalakeos.dfs.core.windows.net"
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "Json_for_SP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Linked_SAS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "lookup_config.json",
+				"container": "movies"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"ProcedureName": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

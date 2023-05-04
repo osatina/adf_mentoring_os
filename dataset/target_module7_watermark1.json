@@ -1,0 +1,34 @@
+{
+	"name": "target_module7_watermark1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_ManagedIdentity",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"watermark": {
+				"type": "string",
+				"defaultValue": "123"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TableName",
+				"type": "varchar"
+			},
+			{
+				"name": "WatermarkValue",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "watermarktable1"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

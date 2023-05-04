@@ -1,0 +1,18 @@
+{
+	"name": "source_onejson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobModule7_SAS_URI",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "newblobstorage"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

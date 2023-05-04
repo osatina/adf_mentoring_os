@@ -1,0 +1,6 @@
+{
+	"name": "SelfHostedIntegrationRuntimeos",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

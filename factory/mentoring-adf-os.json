@@ -1,0 +1,21 @@
+{
+	"name": "mentoring-adf-os",
+	"properties": {
+		"globalParameters": {
+			"logicapps": {
+				"type": "string",
+				"value": "https://prod-03.francecentral.logic.azure.com:443/workflows/33d818cb0f5c4e2d922625702a84b6d3/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ezUl9eMd4faMmgcBnfKrIkeNVgxAvzBpHapWs-uGtAw"
+			},
+			"logiappsecretvalue": {
+				"type": "string",
+				"value": "https://mentoring-key-vault-os.vault.azure.net/secrets/Modulle11new/252678f525504b669dfd50cb4e4bc38b?api-version=7.0"
+			}
+		}
+	},
+	"location": "francecentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d148ada2-8b58-479f-b6a7-abaa73f552cb",
+		"tenantId": "e6e0703e-3c1a-4b97-89a1-b0a0aa5e35b0"
+	}
+}

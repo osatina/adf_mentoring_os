@@ -1,0 +1,115 @@
+{
+	"name": "MovetoArchiveFolder",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy from data lake to archive folder",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false,
+							"wildcardFileName": "*.csv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "source_datalake_for_archive",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": "credits"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "target_datalake_archive",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Delete files from Data Lake",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Copy from data lake to archive folder",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "source_datalake_for_archive",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": "credits"
+						}
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureStorageLinkedService",
+							"type": "LinkedServiceReference"
+						},
+						"path": "log/copyactivity-logs/Copy data1"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": false,
+						"wildcardFileName": "*.csv",
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-03-28T12:34:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
