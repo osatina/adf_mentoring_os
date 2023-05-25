@@ -54,7 +54,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Lookup2",
+						"activity": "SP_dbo_spPopulateCast",
 						"dependencyConditions": [
 							"Succeeded"
 						]
