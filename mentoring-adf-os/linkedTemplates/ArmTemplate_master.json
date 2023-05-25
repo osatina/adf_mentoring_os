@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "mentoring-adf-os"
 		},
+		"AzureSQLModule12_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSQLModule12'"
+		},
 		"AzureSqlDatabaseLinkedService_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseLinkedService'"
@@ -19,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase_ManagedIdentity'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=azure-mentoring-os.database.windows.net;Initial Catalog=movies"
+		},
+		"AzureSqlLinkedServiceChangePassport_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlLinkedServiceChangePassport'"
 		},
 		"AzureSqlModule6_SelfHostedIR_connectionString": {
 			"type": "secureString",
@@ -75,6 +83,9 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AzureSQLModule12_connectionString": {
+						"value": "[parameters('AzureSQLModule12_connectionString')]"
+					},
 					"AzureSqlDatabaseLinkedService_connectionString": {
 						"value": "[parameters('AzureSqlDatabaseLinkedService_connectionString')]"
 					},
@@ -83,6 +94,9 @@
 					},
 					"AzureSqlDatabase_ManagedIdentity_connectionString": {
 						"value": "[parameters('AzureSqlDatabase_ManagedIdentity_connectionString')]"
+					},
+					"AzureSqlLinkedServiceChangePassport_connectionString": {
+						"value": "[parameters('AzureSqlLinkedServiceChangePassport_connectionString')]"
 					},
 					"AzureStorageLinkedService_connectionString": {
 						"value": "[parameters('AzureStorageLinkedService_connectionString')]"

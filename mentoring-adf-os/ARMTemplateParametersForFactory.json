@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "mentoring-adf-os"
 		},
+		"AzureSQLModule12_connectionString": {
+			"value": ""
+		},
 		"AzureSqlDatabaseLinkedService_connectionString": {
 			"value": ""
 		},
@@ -13,6 +16,9 @@
 		},
 		"AzureSqlDatabase_ManagedIdentity_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=azure-mentoring-os.database.windows.net;Initial Catalog=movies"
+		},
+		"AzureSqlLinkedServiceChangePassport_connectionString": {
+			"value": ""
 		},
 		"AzureSqlModule6_SelfHostedIR_connectionString": {
 			"value": ""
