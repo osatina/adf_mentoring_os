@@ -237,7 +237,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "DELETE FROM [dbo].[tCast]\nDBCC CHECKIDENT ('movies.[dbo].[tCast]', RESEED, 0)\nTRUNCATE TABLE [dbo].[tMoviesCastMap]",
+						"sqlReaderQuery": "DELETE FROM [dbo].[tCast]\nDBCC CHECKIDENT ('movies.[dbo].[tCast]', RESEED, 0)\nSELECT 1 from movies.[dbo].[tCast]\nTRUNCATE TABLE [dbo].[tMoviesCastMap]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -263,7 +263,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "TRUNCATE TABLE [dbo].[tMoviesCastMap]",
+						"sqlReaderQuery": "TRUNCATE TABLE [dbo].[tMoviesCastMap]\nSELECT 1 from  [dbo].[tMoviesCastMap]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
