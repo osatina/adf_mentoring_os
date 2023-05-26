@@ -9692,7 +9692,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "credits_v1.csv",
+						"fileName": "credits.csv",
 						"container": "movies"
 					},
 					"columnDelimiter": ",",
