@@ -10,11 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "credits.csv",
+				"fileName": "credits_v1.csv",
 				"container": "movies"
 			},
 			"columnDelimiter": ",",
-			"rowDelimiter": "\n",
 			"escapeChar": "\"",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
