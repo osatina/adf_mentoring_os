@@ -1,5 +1,5 @@
 {
-	"name": "LoadSQLfromstagetomovies_airflow",
+	"name": "LoadSQLfromstagetomoviesairflow",
 	"properties": {
 		"activities": [
 			{
