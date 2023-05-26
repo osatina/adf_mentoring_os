@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "mentoring-adf-os"
 		},
+		"AzureBlobStorage_for_airflow_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage_for_airflow'"
+		},
 		"AzureSQLModule12_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSQLModule12'"
@@ -92,6 +96,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"sasUri": "[parameters('AzureBlobStorage_Linked_SAS_sasUri')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage_for_airflow')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage_for_airflow_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -461,48 +478,6 @@
 				"typeProperties": {
 					"schema": "stg",
 					"table": "cinema_tickets"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseLinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlTable4')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabaseLinkedService",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "cast",
-						"type": "nvarchar"
-					},
-					{
-						"name": "crew",
-						"type": "nvarchar"
-					},
-					{
-						"name": "id",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pipelineId",
-						"type": "nvarchar"
-					},
-					{
-						"name": "source_filename",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "stg",
-					"table": "credits"
 				}
 			},
 			"dependsOn": [

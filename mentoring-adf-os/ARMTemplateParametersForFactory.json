@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "mentoring-adf-os"
 		},
+		"AzureBlobStorage_for_airflow_connectionString": {
+			"value": ""
+		},
 		"AzureSQLModule12_connectionString": {
 			"value": ""
 		},
